@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class System extends Model
 {
-    public function Types(){
-    	$type_ids = \App\TypeRelationship::where("system_id", $this->attributes['id'])->get();
-    	return \App\SystemType::whereIn('id', $type_ids)->get();
+    public function type(){
+    	return \App\SystemType::where('id', $this->attributes['type_id'])->get()[0];
     }
 }

@@ -1,7 +1,14 @@
 @extends('layout')
 @section('content')
 
-<h4>Systems</h4>
+<div class="row">
+	<div class="col-md-6">
+		<h4>Systems</h4>
+	</div>
+	<div class="col-md-6 text-right">
+		<button class="btn btn-info mb-2"><i class="fa fa-plus"></i> New System</button>
+	</div>
+</div>
 <table class="table table-bordered table-hover">
 	<thead>
 		<tr>
@@ -26,10 +33,8 @@
 		<tr id="{{ $s->id }}">
 			<td>{{ $s->name }}</td>
 			<td>
-				@if(!empty($s->Types()))
-					@foreach($s->Types() as $t)
-						<i class="fa fa-fw {{$t->icon}} fa-2x"></i>
-					@endforeach
+				@if(!empty($s->type()))
+					<i class="fa fa-fw {{$s->type()->icon}} fa-2x"></i>
 				@endif
 			</td>
 			<td>0</td>
