@@ -13,22 +13,30 @@
 	</thead>
 
 	<tbody>
-		<tr id="1">
+	{{-- 	<tr id="1">
 			<td>Bismillah Bakery</td>
 			<td>
 				<i class="fa fa-fw fa-mobile fa-2x"></i>
 			</td>
 			<td>3</td>
 			<td>{{ date('d-m-Y') }}</td>
-		</tr>
-		<tr id="2">
-			<td>Hajj Travels</td>
+		</tr> --}}
+		@if(!empty($systems) && count($systems) > 0)
+		@foreach($systems as $s)
+		<tr id="{{ $s->id }}">
+			<td>{{ $s->name }}</td>
 			<td>
-				<i class="fa fa-fw fa-desktop fa-2x"></i>
+				@if(!empty($s->Types()))
+					@foreach($s->Types() as $t)
+						<i class="fa fa-fw {{$t->icon}} fa-2x"></i>
+					@endforeach
+				@endif
 			</td>
-			<td>18</td>
-			<td>{{ date('d-m-Y') }}</td>
+			<td>0</td>
+			<td>{{ $s->created_at }}</td>
 		</tr>
+		@endforeach
+		@endif
 	</tbody>
 </table>
 

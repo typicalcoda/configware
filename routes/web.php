@@ -24,7 +24,8 @@ Route::get('/home', function(){
 
 
 Route::get('/systems', function(){
-	return view('home.admin.systems');
+	$systems = App\System::all();
+	return view('home.admin.systems', compact('systems'));
 })->middleware('auth');
 
 
@@ -44,7 +45,7 @@ Route::get('/clients', function(){
 Route::get('/login', function(){
 	if(Auth::check()) return redirect('home');
 	return view('auth.admin.login');
-});
+})->name("login");
 
 Route::post('/login', function(){
 	
