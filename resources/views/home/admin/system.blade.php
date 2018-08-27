@@ -12,7 +12,7 @@
 <table class="table table-bordered table-hover">
 	<thead>
 		<tr>
-			<th>Client</th>
+			<th>Configuration</th>
 			<th>Date created</th>
 		</tr>
 	</thead>

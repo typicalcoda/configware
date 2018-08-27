@@ -6,7 +6,9 @@
 		<h4>Systems</h4>
 	</div>
 	<div class="col-md-6 text-right">
-		<button class="btn btn-info mb-2"><i class="fa fa-plus"></i> New System</button>
+		<a href="/systems/new">
+			<button class="btn btn-info mb-2"><i class="fa fa-plus"></i> New System</button>
+		</a>
 	</div>
 </div>
 <table class="table table-bordered table-hover">
@@ -34,7 +36,7 @@
 			<td>{{ $s->name }}</td>
 			<td>
 				@if(!empty($s->type()))
-					<i class="fa fa-fw {{$s->type()->icon}} fa-2x"></i>
+				<i class="fa fa-fw {{$s->type()->icon}} fa-2x"></i>
 				@endif
 			</td>
 			<td>0</td>

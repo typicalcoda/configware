@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    if(Auth::check()) { return redirect('home'); }
-    return redirect('login');
+	if(Auth::check()) { return redirect('home'); }
+	return redirect('login');
 });
 
 
@@ -27,6 +27,24 @@ Route::get('/systems', function(){
 	$systems = App\System::all();
 	return view('home.admin.systems', compact('systems'));
 })->middleware('auth');
+
+
+Route::get('/systems/new', function(){
+	$system_types = App\SystemType::all();
+	return view('home.admin.new_system', compact('system_types'));
+})->middleware('auth');
+
+
+Route::get('/system/create', function(){
+  $validated_data = $request->validate([
+        'system_name' => 'required|unique:posts|max:255',
+        'system_description' => 'required',
+        'options' => 'required'
+    ]);
+
+
+})->middleware('auth');
+
 
 
 Route::get('/systems/{id}', function($id){
