@@ -9,6 +9,11 @@
 		<a href="/systems/new">
 			<button class="btn btn-info mb-2"><i class="fa fa-plus"></i> New System</button>
 		</a>
+		<form action="systems/delete_all" method="POST"  style='display: inline;'>
+			{{csrf_field()}}
+		<button class="btn btn-danger mb-2"><i class="fa fa-trash"></i> Delete All</button>
+		</form>
+		
 	</div>
 </div>
 <table class="table table-bordered table-hover">
@@ -53,7 +58,7 @@
 <script type="text/javascript">
 	$("table tbody tr").click(function(e){
 		var id = $(e.target).parent().attr('id');
-		window.location = "/systems/"+id;
+		window.location = "/systems/edit/"+id;
 	});
 </script>
 @endsection

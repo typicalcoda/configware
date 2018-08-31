@@ -78,6 +78,13 @@ return [
             'prefix' => '',
         ],
 
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            'host'     => 'localhost',
+            'port'     =>  27017,
+            'database' => 'configurator',
+        ],
+
     ],
 
     /*

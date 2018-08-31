@@ -153,6 +153,7 @@ return [
         /*
          * Application Service Providers...
          */
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
