@@ -31,7 +31,7 @@ Route::get('/systems', function(){
 
 Route::get('/test', function(){
 	$app = App\System::all()[0];
-	return $app->config()->models()[0];
+	return $app->config()->roles;
 });
 
 Route::get('/systems/new', function(){

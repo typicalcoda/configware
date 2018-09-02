@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class System extends Model
 {
     public function type(){
-    	return \App\SystemType::where('id', $this->attributes['type_id'])->get()[0];
+    	return \App\SystemType::where('id', $this->attributes['type_id'])->first();
     }
 
     public function config(){
-    	return \App\Configuration::where('_id', $this->attributes['config_id'])->get()[0];
+    	return \App\Configuration::where('_id', $this->attributes['config_id'])->first();
     }
 }
