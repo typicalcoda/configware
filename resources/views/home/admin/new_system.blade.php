@@ -32,7 +32,7 @@
 					</div>
 					<div class="col-md-3">
 						<div>
-							<label for="name">Validation</label>
+							<label for="name">Validation Type</label>
 						</div>
 						<select class="custom-select">
 							<option>Email</option>
@@ -55,8 +55,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<hr>
-						<h5>User Roles & Permissions</h5>
-						<div class="row user_roles">
+						<h5>Field Permissions</h5>
+						<div class="field_permissions mt-4">
+
 						</div>
 					</div>
 				</div>
@@ -230,20 +231,34 @@
 											<button class="btn btn-info mb-2"><i class="fa fa-plus"></i>&nbspAdd Field</button>
 										</div>
 									</div>
-									<table class="table table-bordered table-hover">
-										<thead>
-											<tr>
-												<th>Name</th>
-												<th>Nullable</th>
-												<th>Min Length</th>
-												<th>Max Length</th>
-												<th>Validation Type</th>
-											</tr>
-										</thead>
+									<div class="row">
+										<div class="col-md-12">
+											<table class="table table-bordered table-hover">
+												<thead>
+													<tr>
+														<th>Name</th>
+														<th>Nullable</th>
+														<th>Min Length</th>
+														<th>Max Length</th>
+														<th>Validation Type</th>
+													</tr>
+												</thead>
 
-										<tbody id="model_fields">
-										</tbody>
-									</table>
+												<tbody id="model_fields">
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+									<div class="row mt-2">
+										<div class="col-md-12">
+											<h5>Model Permissions</h5>
+											<hr>
+											<div class="model_permissions">
+
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -312,15 +327,49 @@
 					updateFieldPermissions(selectedFieldId);
 				})
 
-				function updateFieldPermissions(fieldId){
-					var content = "<div class='col-md-6'><select class='custom-select'>";
+				function updateModelPermissions(){
+					var content = "";
 					for(var i = 0; i < config.roles.length; i++){
-						content += `<option value="${config.roles[i].roleName}">${config.roles[i].roleName}</option>`;
+						var current_content = `
+						<div class="row mt-2">
+						<div class="col-md-6">
+						<input class="form-control field-roles" id="${config.roles[i].roleName}" type="text" placeholder="${config.roles[i].roleName}" readonly>
+						</div>
+
+						<div class="col-md-6">
+						<select class="custom-select">
+						<option>Read</option>
+						<option>Update</option>
+						</select>
+						</div>
+						`;
+						content += current_content;
 					}
 
+					$(".model_permissions").html(content);
+				}
 
-					content += "</select></div>";
-					$(".user_roles").html(content);
+				function updateFieldPermissions(fieldId){
+					var content = "";
+					for(var i = 0; i < config.roles.length; i++){
+						var current_content = `
+						<div class="row mt-2">
+						<div class="col-md-6">
+						<input class="form-control field-roles" id="${config.roles[i].roleName}" type="text" placeholder="${config.roles[i].roleName}" readonly>
+						</div>
+
+						<div class="col-md-6">
+						<select class="custom-select">
+						<option>Read</option>
+						<option>Update</option>
+						</select>
+						</div>
+						</div>
+						`;
+						content += current_content;
+					}
+
+					$(".field_permissions").html(content);
 				}
 
 				function updateSelectedField(fieldId){
