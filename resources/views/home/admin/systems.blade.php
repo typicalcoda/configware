@@ -27,14 +27,6 @@
 	</thead>
 
 	<tbody>
-	{{-- 	<tr id="1">
-			<td>Bismillah Bakery</td>
-			<td>
-				<i class="fa fa-fw fa-mobile fa-2x"></i>
-			</td>
-			<td>3</td>
-			<td>{{ date('d-m-Y') }}</td>
-		</tr> --}}
 		@if(!empty($systems) && count($systems) > 0)
 		@foreach($systems as $s)
 		<tr id="{{ $s->id }}">

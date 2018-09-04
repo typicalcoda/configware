@@ -139,12 +139,12 @@
 						</div>
 						<div class="form-group">
 							<label for="name">System Alias/Name</label>
-							<input type="text" class="form-control" name="name" id="name" placeholder="e.g. 'Radioactive'" value={{ old('name') }}>
+							<input type="text" class="form-control" name="name" id="name" placeholder="e.g. 'Radioactive'" value={{ empty($created_system) ? old('name') : $created_system->name }}>
 						</div>
 						<div class="form-group">
 							<div class="form-group">
 								<label for="description">System Description</label>
-								<textarea class="form-control" name="description" id="description" rows="4">{{old('description')}}</textarea>
+								<textarea class="form-control" name="description" id="description" rows="4">{{empty($created_system) ? old('description') : $created_system->description}}</textarea>
 							</div>
 						</div>
 						<div class="form-group">
@@ -165,7 +165,7 @@
 										</div>
 									</div>
 								</div>
-								<button class="btn btn-primary" type="submit">Create</button>
+								<button class="btn {{ empty($created_system) ? 'btn-primary' : 'btn-info' }}" type="submit">{{ empty($created_system) ? 'Create' : 'Save' }}</button>
 								<button class="btn btn-default">Clear</button>
 							</form>
 						</div>
@@ -306,6 +306,7 @@
 			@endsection
 
 			@section('scripts')
+			@if(!empty($created_system) && $created_system->config_id != "0")
 			<script type="text/javascript">
 				var	config = <?php echo json_encode($created_system->config()) ?>;
 				var	models = <?php echo json_encode($created_system->config()->models) ?>;
@@ -410,4 +411,5 @@
 				}
 
 			</script>
+			@endif
 			@endsection
